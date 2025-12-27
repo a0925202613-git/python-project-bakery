@@ -100,7 +100,8 @@ class StrawberryCake(Cake):
     
     def __init__(self, price: int, size: str = "medium"):
         # TODO: 請在這裡完成
-        pass
+        super().__init__("草莓蛋糕",price,size)
+        self.toppings=["草莓","鮮奶油"]
     
     def get_description(self) -> str:
         return "新鮮酸甜的草莓蛋糕，鋪滿當季草莓與鮮奶油"
@@ -125,7 +126,9 @@ class MatchaCake(Cake):
     
     def __init__(self, price: int, size: str = "medium", matcha_level: int = 3):
         # TODO: 請在這裡完成
-        pass
+        super().__init__("抹茶蛋糕",price,size)
+        self.matcha_level=matcha_level
+        self.toppings=["紅豆"]
     
     def get_description(self) -> str:
         return f"濃度 {self.matcha_level} 級的抹茶蛋糕，搭配香甜紅豆"
@@ -150,7 +153,9 @@ class MilleCrepe(Cake):
     
     def __init__(self, price: int, size: str = "medium", cream_flavor: str = "原味"):
         # TODO: 請在這裡完成
-        pass
+        super().__init__("千層蛋糕",price,size)
+        self.cream_flavor=cream_flavor
+        self.shelf_life_days=2
     
     def get_description(self) -> str:
         return f"{self.cream_flavor}口味的千層蛋糕，層層綿密"
@@ -194,7 +199,8 @@ class CinnamonRoll(Pastry):
     
     def __init__(self, price: int, cinnamon_intensity: str = "medium"):
         # TODO: 請在這裡完成
-        pass
+        super().__init__("肉桂捲",price,is_glazed=True)
+        self.cinnamon_intensity=cinnamon_intensity
     
     def get_description(self) -> str:
         return f"肉桂濃度 {self.cinnamon_intensity} 的經典肉桂捲"
@@ -232,7 +238,10 @@ def calculate_total_calories(products: list) -> int:
     （回傳所有商品 get_calories() 的總和）
     """
     # TODO: 請在這裡完成
-    pass
+    total=0
+    for product in products:
+        total+=product.get_calories()
+    return total
 
 
 # ============================================
@@ -250,6 +259,7 @@ if __name__ == "__main__":
     print("\n【草莓蛋糕】")
     strawberry = StrawberryCake(price=350)
     display_product_info(strawberry)
+    
     
     # 測試抹茶蛋糕
     print("\n【抹茶蛋糕】")
@@ -270,3 +280,4 @@ if __name__ == "__main__":
     print("\n【總熱量計算】")
     products = [strawberry, matcha, mille, cinnamon]
     print(f"所有商品總熱量: {calculate_total_calories(products)} 大卡")
+

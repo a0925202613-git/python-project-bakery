@@ -78,7 +78,11 @@ class Bakery:
         [<草莓蛋糕>, <抹茶蛋糕>, ...]  # 回傳所有 is_fresh() 為 True 的商品列表
         """
         # TODO: 請在這裡完成
-        pass
+        result=[]
+        for product in self._products:
+            if product.is_fresh():
+                result.append(product)
+        return result
     
     # ============================================
     # 銷售方法（已完成）
@@ -126,7 +130,15 @@ class Bakery:
         0  # 如果沒有商品，回傳 0
         """
         # TODO: 請在這裡完成
-        pass
+        if not self._products:
+            return 0
+        
+        total=0
+        for product in self._products:
+            total += product.price
+        
+        average=total/len(self._products)
+        return round(average,2)
     
     # ============================================
     # 練習：顯示方法
@@ -163,7 +175,13 @@ class Bakery:
         🍰═══════════════════════════════🍰
         """
         # TODO: 請在這裡完成
-        pass
+        print(DIVIDER_CAKE)
+        print("📊 銷售報告")
+        print(DIVIDER_CAKE)
+        print(f"今日銷售額：{self._daily_sales}")
+        print(DIVIDER_CAKE)
+
+
     
     def __str__(self):
         """
@@ -174,7 +192,7 @@ class Bakery:
         Sia's Bakery - 共 4 項商品
         """
         # TODO: 請在這裡完成
-        pass
+        return f"{self.name}-共{len(self._products)}項商品。"
 
 
 # ============================================
@@ -268,3 +286,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+ㄏ
